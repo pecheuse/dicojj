@@ -12,7 +12,7 @@ async def on_ready():
     print(bot.user.name)
     print(bot.user.id)
     print("------------------")
-    await bot.change_presence(game=discord.Game(name="TruTh지킴이의 별명을 지어주세요", type=1))
+    await bot.change_presence(game=discord.Game(name="수린이 입니다. -_-", type=1))
 @bot.event
 async def on_message(message):
     if message.content.startswith("봇 안녕"):
