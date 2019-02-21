@@ -5,7 +5,7 @@ import requests
 from bs4 import BeautifulSoup as bs
 client = discord.Client()
 bot = commands.Bot(command_prefix='T')
-import os`
+import os
 @bot.event
 async def on_ready():
     print("로그인")
