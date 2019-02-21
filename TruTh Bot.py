@@ -5,7 +5,7 @@ import requests
 from bs4 import BeautifulSoup as bs
 client = discord.Client()
 bot = commands.Bot(command_prefix='T')
-
+import os`
 @bot.event
 async def on_ready():
     print("로그인")
@@ -31,4 +31,5 @@ async def on_message(message):
         del group, search, bp, img
 
         # await bot.send_message(message.channel, "https://www.google.com/search?q=")
-bot.run('NTQ3NDczMDU4OTk1MzcyMDYz.D03TLw.0xdlLBtd2jvFG895mt0sD2JZatk')
+access_token = os.environ["BOT_TOKEN"]
+bot.run(access_token)
