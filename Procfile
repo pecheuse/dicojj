@@ -1,1 +1,1 @@
-worker: python TruTh Bot.py
+worker: python TruThBot.py
