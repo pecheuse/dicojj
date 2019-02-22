@@ -17,14 +17,15 @@ async def on_ready():
 async def on_message(message):
     if message.content.startswith("봇"):
         if message.content[-1] == "?":
-            if message.content[3] == "나":
-                await bot.send_message(message.channel, "네," + "너"+message.content[1:-1])
+            if message.content[1] == "나":
+                await bot.send_message(message.channel, "네," + "너"+message.content[2:-1])
             else:
                 await bot.send_message(message.channel, "네," + message.content[1:-1])
-        elif message.content[3]== "나":
-            await bot.send_message(message.channel, "네," + "너"+message.content[1:-1])
         else:
-            await bot.send_message(message.channel, "네,"+message.content[1:])
+            if message.content[1]== "나":
+                await bot.send_message(message.channel, "네," + "너"+message.content[2:-1])
+            else:
+                await bot.send_message(message.channel, "네,"+message.content[1:])
     id = message.author.id
     if message.content.startswith("tr"):
          await bot.send_message(message.channel, "<@" + id + ">님이\"" + message.content[3:] + "\"라고 말하였습니다.")
