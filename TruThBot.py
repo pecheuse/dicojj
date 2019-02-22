@@ -17,7 +17,12 @@ async def on_ready():
 async def on_message(message):
     if message.content.startswith("봇"):
         if message.content[-1] == "?":
-            await bot.send_message(message.channel, "네," + message.content[1:-1])
+            if message.content[0] == "나":
+                await bot.send_message(message.channel, "네," + "너"+message.content[1:-1])
+            else:
+                await bot.send_message(message.channel, "네," + message.content[1:-1])
+        elif message.content[0]== "나":
+            await bot.send_message(message.channel, "네," + "너"+message.content[1:-1])
         else:
             await bot.send_message(message.channel, "네,"+message.content[1:])
     id = message.author.id
