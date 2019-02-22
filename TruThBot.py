@@ -32,7 +32,9 @@ async def on_message(message):
         await bot.send_message(message.channel, img[11]['src'])
 
         del group, search, bp, img
-
+    if message.content.startswith("비밀"):
+        await bot.delete_message(message)
+        await bot.send_message(message.channel, message.content[2:])
         # await bot.send_message(message.channel, "https://www.google.com/search?q=")
 access_token = os.environ["BOT_TOKEN"]
 bot.run(access_token)
