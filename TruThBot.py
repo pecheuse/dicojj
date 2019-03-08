@@ -23,21 +23,21 @@ async def on_message(message):
     if message.content.startswith("봇 "):
         if message.content[-1] == "?":
             if message.content[2] == "나":
-                embed = discord.Embed(title="수린:", description= YES + YES2+message.content[3:-1], color=0x00ff00)
+                embed = discord.Embed(title="수린:", description= YES + YES2+message.content[3:-1], color=#383b38)
                 await bot.send_message(message.channel, embed=embed)
             else:
-                embed = discord.Embed(title="수린:", description= YES + message.content[2:-1], color=0x00ff00)
+                embed = discord.Embed(title="수린:", description= YES + message.content[2:-1], color=#383b38)
                 await bot.send_message(message.channel, embed=embed)
         else:
             if message.content[2]== "나":
-                embed = discord.Embed(title="수린:", description= YES + YES2+message.content[3:-1], color=0x00ff00)
+                embed = discord.Embed(title="수린:", description= YES + YES2+message.content[3:-1], color=#383b38)
                 await bot.send_message(message.channel, embed=embed)
             else:
-                embed = discord.Embed(title="수린:", description= YES+message.content[2:], color=0x00ff00)
+                embed = discord.Embed(title="수린:", description= YES+message.content[2:], color=#383b38)
                 await bot.send_message(message.channel, embed=embed)
     id = message.author.id
     if message.content.startswith("tr "):
-         embed = discord.Embed(title="수린:", description=YES3 + id + YES4 + message.content[3:] + YES5, color=0x00ff00)
+         embed = discord.Embed(title="수린:", description=YES3 + id + YES4 + message.content[3:] + YES5, color=#383b38)
          await bot.send_message(message.channel, embed=embed)
     if "검색" == message.content.split(" ")[0]:
         group = message.content.split(" ")[1]
@@ -51,7 +51,7 @@ async def on_message(message):
         del group, search, bp, img, embed
     if message.content.startswith("비밀"):
         await bot.delete_message(message)
-        embed = discord.Embed(title="비밀 메지 입니다.", description=message.content[2:], color=0x00ff00)
+        embed = discord.Embed(title="비밀 메시지 입니다.", description=message.content[2:], color=#383b38)
         await bot.send_message(message.channel, embed=embed)
         # await bot.send_message(message.channel, "https://www.google.com/search?q=")
     if message.content.startswith("T표현 "):
@@ -93,7 +93,7 @@ async def on_message(message):
         Z7 = Z6.replace('7', ':seven:')
         Z8 = Z7.replace('8', ':eight:')
         Z9 = Z8.replace('9', ':nine:')
-        embed = discord.Embed(title=Z9, color=0x00ff00)
+        embed = discord.Embed(title=Z9, color=#383b38)
 
         await bot.send_message(message.channel, embed=embed)
 access_token = os.environ["BOT_TOKEN"]
