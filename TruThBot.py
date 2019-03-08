@@ -6,6 +6,11 @@ from bs4 import BeautifulSoup as bs
 client = discord.Client()
 bot = commands.Bot(command_prefix='T')
 import os
+YES = "네,"
+YES2 = "너"
+YES3 = "<@"
+YES4 = ">님이\""
+YES5 = "\"라고 말하였습니다."
 @bot.event
 async def on_ready():
     print("로그인")
@@ -18,21 +23,21 @@ async def on_message(message):
     if message.content.startswith("봇 "):
         if message.content[-1] == "?":
             if message.content[2] == "나":
-                embed = discord.Embed(title="수린:" description="네," + "너"+message.content[3:-1], color=0x00ff00)
+                embed = discord.Embed(title="수린:" description= YES + YES2+message.content[3:-1], color=0x00ff00)
                 await bot.send_message(message.channel, embed=embed)
             else:
-                embed = discord.Embed(title="수린:" description="네," + message.content[2:-1], color=0x00ff00)
+                embed = discord.Embed(title="수린:" description= YES + message.content[2:-1], color=0x00ff00)
                 await bot.send_message(message.channel, embed=embed)
         else:
             if message.content[2]== "나":
-                embed = discord.Embed(title="수린:" description="네," + "너"+message.content[3:-1], color=0x00ff00)
+                embed = discord.Embed(title="수린:" description= YES + YES2+message.content[3:-1], color=0x00ff00)
                 await bot.send_message(message.channel, embed=embed)
             else:
-                embed = discord.Embed(title="수린:" description="네,"+message.content[2:], color=0x00ff00)
+                embed = discord.Embed(title="수린:" description= YES+message.content[2:], color=0x00ff00)
                 await bot.send_message(message.channel, embed=embed)
     id = message.author.id
     if message.content.startswith("tr "):
-         embed = discord.Embed(title="수린:" description="<@" + id + ">님이\"" + message.content[3:] + "\"라고 말하였습니다.", color=0x00ff00)
+         embed = discord.Embed(title="수린:" description=YES3 + id + YES4 + message.content[3:] + YES5, color=0x00ff00)
          await bot.send_message(message.channel, embed=embed)
     if "검색" == message.content.split(" ")[0]:
         group = message.content.split(" ")[1]
@@ -41,7 +46,7 @@ async def on_message(message):
         img = bp.find_all("img")
         embed = discord.Embed(title="수린:", color=0x00ff00)
         embed.set_footer(text="https://www.google.com/search?hl=ko&biw=958&bih=959&tbm=isch&sa=1&ei=L5ZtXJ2aLpGSr7wPiKuC-A0&q="+group)
-        embed.set_image(img[11]['src']
+        embed.set_image(img[11]['src'])
         await bot.send_message(message.channel, embed=embed)
         del group, search, bp, img, embed
     if message.content.startswith("비밀"):
