@@ -43,10 +43,12 @@ async def on_message(message):
         group = message.content.split(" ")[1]
         search = requests.get("https://www.google.com/search?hl=ko&biw=958&bih=959&tbm=isch&sa=1&ei=L5ZtXJ2aLpGSr7wPiKuC-A0&q="+group)
         bp = bs(search.text, "html.parser")
-        img = bp.find('img', class_='irc_mi')
+        img = bp.find_all('img')
+        img2=img[2]
+        img_src=img2.get('src')
         embed = discord.Embed(title="수린:", color=0x383b38)
         embed.set_footer(text="https://www.google.com/search?hl=ko&biw=958&bih=959&tbm=isch&sa=1&ei=L5ZtXJ2aLpGSr7wPiKuC-A0&q="+group)
-        embed.set_image(img['src'])
+        embed.set_image(img_src)
         await bot.send_message(message.channel, embed=embed)
         del group, search, bp, img, embed
     if message.content.startswith("비밀"):
