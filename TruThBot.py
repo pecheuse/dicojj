@@ -44,7 +44,8 @@ async def on_message(message):
         # await bot.send_message(message.channel, "https://www.google.com/search?q=")
     if message.content.startswith("T표현 "):
         AA = message.content[4:]
-        A = AA.replace('A', ":regional_indicator_a:")
+        AA2 = AA.capitalize()
+        A = AA2.replace('A', ":regional_indicator_a:")
         B = A.replace('B', ":regional_indicator_b:")
         CC = B.replace('C', ":regional_indicator_c:")
         DD = CC.replace('D', ":regional_indicator_d:")
