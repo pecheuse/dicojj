@@ -27,7 +27,7 @@ async def on_message(message):
             else:
                 await bot.send_message(message.channel, "네,"+message.content[2:])
     id = message.author.id
-    if message.content.startswith("tr"):
+    if message.content.startswith("tr "):
          await bot.send_message(message.channel, "<@" + id + ">님이\"" + message.content[3:] + "\"라고 말하였습니다.")
     if "검색" == message.content.split(" ")[0]:
         group = message.content.split(" ")[1]
