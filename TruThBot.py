@@ -46,7 +46,7 @@ async def on_message(message):
         img = bp.find_all('img')
         img2=img[2]
         img_src=img2.get('src')
-        embed = discord.Embed(title="수린:", color=0x383b38)
+        embed = discord.Embed(title="수린:", description= "https://www.google.com/search?hl=ko&biw=958&bih=959&tbm=isch&sa=1&ei=L5ZtXJ2aLpGSr7wPiKuC-A0&q="+group, color=0x383b38)
         embed.set_footer(text="https://www.google.com/search?hl=ko&biw=958&bih=959&tbm=isch&sa=1&ei=L5ZtXJ2aLpGSr7wPiKuC-A0&q="+group, icon_url="https://www.google.com/search?hl=ko&biw=958&bih=959&tbm=isch&sa=1&ei=L5ZtXJ2aLpGSr7wPiKuC-A0&q="+group)
         embed.set_image(url=img_src)
         await bot.send_message(message.channel, embed=embed)
