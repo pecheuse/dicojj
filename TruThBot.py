@@ -51,7 +51,7 @@ async def on_message(message):
         del group, search, bp, img, embed
     if message.content.startswith("비밀"):
         await bot.delete_message(message)
-        embed = discord.Embed(title="비밀 메시지 입니다.", description=message.content[2:], color=#383b38)
+        embed = discord.Embed(title="비밀 메시지 입니다.", description=message.content[2:], color=0x383b38)
         await bot.send_message(message.channel, embed=embed)
         # await bot.send_message(message.channel, "https://www.google.com/search?q=")
     if message.content.startswith("T표현 "):
