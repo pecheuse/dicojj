@@ -95,7 +95,7 @@ async def on_message(message):
         Z7 = Z6.replace('7', ':seven:')
         Z8 = Z7.replace('8', ':eight:')
         Z9 = Z8.replace('9', ':nine:')
-        embed = discord.Embed(title=Z9, color=0x383b38)
+        embed = discord.Embed(description=Z9, color=0x383b38)
 
         await bot.send_message(message.channel, embed=embed)
 access_token = os.environ["BOT_TOKEN"]
