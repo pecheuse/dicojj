@@ -99,7 +99,8 @@ async def on_message(message):
     if message.content.startswith("T명령어"):
         await bot.send_message(message.channel, "봇 <내용> (대화 기능)\ntr <내용> (내용 강조)\n검색 <내용> (이미지 검색)\n비밀 <내용> (비밀 메시지)\nT표현 <내용> (이모티콘으로 영어,숫자표시)")
         await bot.send_message(message.channel, embed=embed)
-#     if message.content.startswith("T투표"):
-#         await bot.add_reaction(message.content+"에 관한 투표를 시작합니다."
+    if message.content.startswith("T투표"):
+        reactions = ['✅', '❌']
+        await self.bot.add_reaction(message.content+"에 관한 투표를 시작합니다.", reactions)
 access_token = os.environ["BOT_TOKEN"]
 bot.run(access_token)
