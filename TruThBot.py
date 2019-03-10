@@ -104,7 +104,7 @@ async def on_message(message):
         vote = message.content[4:].split("/")
         await bot.send_message(message.channel, "투표" +vote[0])
         for TTT in range(1, len(vote)):
-            choose = await bot.send_message(message.channel, "```"+vote[TTT])
+            choose = await bot.send_message(message.channel, "*"+vote[TTT]+"*")
             await bot.add_reaction(choose, '✅')
             await bot.add_reaction(choose, '❌')
         
