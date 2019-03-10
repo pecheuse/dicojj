@@ -101,7 +101,26 @@ async def on_message(message):
         embed = bot.send_message(message.channel, "봇 <내용> (대화 기능)\ntr <내용> (내용 강조)\n검색 <내용> (이미지 검색)\n비밀 <내용> (비밀 메시지)\nT표현 <내용> (이모티콘으로 영어,숫자표시)")
         await bot.send_message(message.channel, embed=embed)
     if message.content.startswith("T투표"):
-        reactions = ['✅', '❌']
-        await self.bot.add_reaction(message.content+"에 관한 투표를 시작합니다.", reactions)
+        async def quickpoll(self, ctx, question, *options: str):
+            if len(options) <= 1:
+                await self.bot.say('You need more than one option to make a poll!')
+                return
+            if len(options) > 10:
+                await self.bot.say('You cannot make a poll for more than 10 things!')
+                return
+
+            if len(options) == 2 and options[0] == 'yes' and options[1] == 'no':
+                reactions = ['✅', '❌']
+            else:
+                reactions = ['1⃣', '2⃣', '3⃣', '4⃣', '5⃣', '6⃣', '7⃣', '8⃣', '9⃣', '🔟']
+            description = []
+            for x, option in enumerate(options):
+                description += '\n {} {}'.format(reactions[x], option)
+            embed = discord.Embed(title=question, description=''.join(description))
+            react_message = await self.bot.say(embed=embed)
+            for reaction in reactions[:len(options)]:
+                await self.bot.add_reaction(react_message, reaction)
+            embed.set_footer(text='Poll ID: {}'.format(react_message.id))
+            await self.bot.edit_message(react_message, embed=embed)
 access_token = os.environ["BOT_TOKEN"]
 bot.run(access_token)
