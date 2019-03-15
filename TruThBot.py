@@ -117,7 +117,7 @@ async def on_message(message):
         await bot.send_message(message.channel, embed=embed)
     if message.content.startswith("Tnick "):
         if message.content[6:9] == 'add':
-            write = open('./nickname.txt', 'w')
+            write = open('./nickname.txt', 'a+')
             write.write(YES3+id+">:"+message.content[10:])
             write.close()
             await bot.send_message(message.channel, 'Done!')
