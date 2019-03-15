@@ -113,5 +113,9 @@ async def on_message(message):
         select2 = random.choice(select)
         embed = discord.Embed(description="선정:"+select2, color=0x383b38)
         await bot.send_message(message.channel, embed=embed)
+    if message.content.startswith("T닉네임추가 "):
+        write = open("nickname.txt", a+)
+        write.write(YES3+id+">님의 nickname은"+message.content[7:]+"입니다.")
+        write.close()
 access_token = os.environ["BOT_TOKEN"]
 bot.run(access_token)
