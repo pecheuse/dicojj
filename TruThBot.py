@@ -118,7 +118,7 @@ async def on_message(message):
     if message.content.startswith("Tnick "):
         if message.content[6:9] == 'add':
             write = open('./nickname.txt', 'a+')
-            write.write(YES3+id+">:"+message.content[10:])
+            write.write(YES3+id+">:"+message.content[10:]+"/n")
             write.close()
             await bot.send_message(message.channel, 'Done!')
         if message.content[6:10] == 'list':
