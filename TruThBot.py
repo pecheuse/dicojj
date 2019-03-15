@@ -113,13 +113,15 @@ async def on_message(message):
         select2 = random.choice(select)
         embed = discord.Embed(description="선정:"+select2, color=0x383b38)
         await bot.send_message(message.channel, embed=embed)
-    if message.content.startswith("T닉네임추가 "):
-        write = open("nickname.txt", 'a+')
-        write.write(YES3+id+">님의 nickname은"+message.content[7:]+"입니다.")
-        write.close()
-    if message.content.startswith("T닉네임목록"):
-        read = open("nickname.txt")
-        await bot.send_message(message.channel, read.read())
-        read.close()
+    if message.content.startswith("Tnick "):
+        if message.content[6:9] == 'add':
+            write = open("nickname.txt", 'a+')
+            write.write(YES3+id+">:"+message.content[10:])
+            write.close()
+            await bot.send_message(message.channel, 'Done!')
+        if message.content[6:10] == 'list':
+            read = open("nickname.txt")
+            await bot.send_message(message.channel, read.read())
+            read.close()
 access_token = os.environ["BOT_TOKEN"]
 bot.run(access_token)
