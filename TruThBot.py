@@ -2,7 +2,6 @@ import discord
 from discord.ext import commands
 import asyncio
 import requests
-import random
 from bs4 import BeautifulSoup as bs
 client = discord.Client()
 bot = commands.Bot(command_prefix='T')
