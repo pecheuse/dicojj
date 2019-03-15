@@ -107,6 +107,10 @@ async def on_message(message):
             choose = await bot.send_message(message.channel, "*"+vote[TTT]+"*")
             await bot.add_reaction(choose, '✅')
             await bot.add_reaction(choose, '❌')
-        
+    if message.content.startswith("T랜덤"):
+        select = message.content[4:].split("/")
+        select2 = random.choice(select)
+        embed = discord.Embed(description="선정:"+select2, color=0x383b38)
+        await bot.send_message(message.channel, embed=embed)
 access_token = os.environ["BOT_TOKEN"]
 bot.run(access_token)
