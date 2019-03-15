@@ -7,6 +7,8 @@ from bs4 import BeautifulSoup as bs
 client = discord.Client()
 bot = commands.Bot(command_prefix='T')
 import os
+WD = os.path.dirname(os.path.abspath(__file__))
+AD = 'nickname.txt'
 YES = "네,"
 YES2 = "너"
 YES3 = "<@"
@@ -115,12 +117,12 @@ async def on_message(message):
         await bot.send_message(message.channel, embed=embed)
     if message.content.startswith("Tnick "):
         if message.content[6:9] == 'add':
-            write = open("dicojj/nickname.txt", 'a+')
+            write = open('%s/nickname.txt' % WD, 'a+')
             write.write(YES3+id+">:"+message.content[10:])
             write.close()
             await bot.send_message(message.channel, 'Done!')
         if message.content[6:10] == 'list':
-            read = open("dicojj/nickname.txt")
+            read = open('%s/nickname.txt' % WD)
             await bot.send_message(message.channel, read.read())
             read.close()
 access_token = os.environ["BOT_TOKEN"]
