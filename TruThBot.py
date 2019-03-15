@@ -117,5 +117,9 @@ async def on_message(message):
         write = open("nickname.txt", a+)
         write.write(YES3+id+">님의 nickname은"+message.content[7:]+"입니다.")
         write.close()
+    if message.content.startswith("T닉네임목록"):
+        read = open("nickname.txt")
+        await bon.send_message(message.channel, read.read())
+        read.close()
 access_token = os.environ["BOT_TOKEN"]
 bot.run(access_token)
