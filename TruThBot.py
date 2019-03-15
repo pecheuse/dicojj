@@ -115,12 +115,12 @@ async def on_message(message):
         await bot.send_message(message.channel, embed=embed)
     if message.content.startswith("Tnick "):
         if message.content[6:9] == 'add':
-            write = open("./nickname.txt", 'a+')
+            write = open("dicojj/nickname.txt", 'a+')
             write.write(YES3+id+">:"+message.content[10:])
             write.close()
             await bot.send_message(message.channel, 'Done!')
         if message.content[6:10] == 'list':
-            read = open("./nickname.txt")
+            read = open("dicojj/nickname.txt")
             await bot.send_message(message.channel, read.read())
             read.close()
 access_token = os.environ["BOT_TOKEN"]
