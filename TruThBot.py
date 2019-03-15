@@ -119,7 +119,7 @@ async def on_message(message):
         write.close()
     if message.content.startswith("T닉네임목록"):
         read = open("nickname.txt")
-        await bon.send_message(message.channel, read.read())
+        await bot.send_message(message.channel, read.read())
         read.close()
 access_token = os.environ["BOT_TOKEN"]
 bot.run(access_token)
