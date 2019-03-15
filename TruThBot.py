@@ -99,7 +99,7 @@ async def on_message(message):
         embed = discord.Embed(description=Z9, color=0x383b38)
         await bot.send_message(message.channel, embed=embed)
     if message.content.startswith("T명령어"):
-        embed = discord.Embed(description= "봇 <내용> (대화 기능)\ntr <내용> (내용 강조)\n검색 <내용> (이미지 검색)\n비밀 <내용> (비밀 메시지)\nT표현 <내용> (이모티콘으로 영어,숫자표시)\nT투표 <(내용)/투표)> (투표)", color=0x383b38)
+        embed = discord.Embed(description= "봇 <내용> (대화 기능)\ntr <내용> (내용 강조)\n검색 <내용> (이미지 검색)\n비밀 <내용> (비밀 메시지)\nT표현 <내용> (이모티콘으로 영어,숫자표시)\nT투표 <(내용)/투표)> (투표)\nT랜덤 <1번/2번/3번/4번...> (랜덤 추첨)", color=0x383b38)
         await bot.send_message(message.channel, embed=embed)
     if message.content.startswith("T투표"):
         vote = message.content[4:].split("/")
