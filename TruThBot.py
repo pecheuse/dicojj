@@ -133,7 +133,7 @@ async def on_message(message):
             read = open('./nickname.txt', 'r')
             await message.channel.send(message.channel, read.read())
             read.close() """
-        if message.content[0:4] == "$계산 ":
+    if message.content[0:4] == "$계산 ":
         splitphase = message.content.split(" ")
         first1 = int(splitphase[1])
         second2 = splitphase[2]
@@ -176,6 +176,4 @@ async def on_message(message):
         split7 = ' '.join(split5[2:])
         for i in range(split6):
             await message.channel.send(split7)
-
-
-bot.run("ODE5OTIyODMzMDM5ODE4NzYz.YEtqpA.OV40P7_zlnctSd7IZkPaUMXN79M")
+bot.run("BOT_TOKEN")
