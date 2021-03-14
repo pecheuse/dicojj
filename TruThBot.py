@@ -42,17 +42,21 @@ async def on_message(message):
     if message.content.startswith("tr "):
          embed = discord.Embed(title="수린:", description=YES3 + id + YES4 + message.content[3:] + YES5, color=0x383b38)
          await bot.send_message(message.channel, embed=embed)
-    if "검색" == message.content.split(" ")[0]:
-        group = message.content.split(" ")[1]
-        search = requests.get("https://www.google.com/search?hl=ko&biw=958&bih=959&tbm=isch&sa=1&ei=L5ZtXJ2aLpGSr7wPiKuC-A0&q="+group)
-        bp = bs(search.text, "html.parser")
-        img = bp.find_all('img')
+    if message.content[0:4] == "$검색 ":
+        messagesplit = message.content.split(" ")
+        messagesplit = ''.join(messagesplit[1:])
+        webpage = requests.get("https://www.google.com/search?q="+str(messagesplit)+"&hl=ko&tbm=isch")
+        soup = BeautifulSoup(webpage.text, "html.parser")
+        img = soup.find_all('img')
         img2=img[2]
         img_src=img2.get('src')
-        embed = discord.Embed(title="수린:", description= "https://www.google.com/search?hl=ko&biw=958&bih=959&tbm=isch&sa=1&ei=L5ZtXJ2aLpGSr7wPiKuC-A0&q="+group, color=0x383b38)
-        embed.set_footer(icon_url="https://www.google.com/search?hl=ko&biw=958&bih=959&tbm=isch&sa=1&ei=L5ZtXJ2aLpGSr7wPiKuC-A0&q="+group)
+        embed = discord.Embed(title=message.content[4:]+":",
+                              description="https://www.google.com/search?q="+str(messagesplit)+"&hl=ko&tbm=isch",
+                              color=0x383b38)
+        embed.set_footer(
+            icon_url="https://www.google.com/search?q="+str(messagesplit)+"&hl=ko&tbm=isch")
         embed.set_image(url=img_src)
-        await bot.send_message(message.channel, embed=embed)
+        await message.channel.send(message.content, embed=embed)
         del group, search, bp, img, embed
     if message.content.startswith("비밀"):
         await bot.delete_message(message)
@@ -125,5 +129,49 @@ async def on_message(message):
             read = open('./nickname.txt', 'r')
             await bot.send_message(message.channel, read.read())
             read.close()
+    if message.content[0:4] == "$계산 ":
+        splitphase = message.content.split(" ")
+        first1 = int(splitphase[1])
+        second2 = splitphase[2]
+        third3 = int(splitphase[3])
+        result2 = 0
+        if second2 == "*":
+            result2 = first1 * third3
+        elif second2 == "/":
+            result2 = first1 / third3
+        elif second2 == "+":
+            result2 = first1 + third3
+        elif second2 == "-":
+            result2 = first1 - third3
+        await message.channel.send(result2)
+    if message.content[0:5] == "$계산기 ":
+        splitphase = message.content.split(" ")
+        result3 = int(splitphase[1])
+
+        for i in range(len(splitphase)):
+            if i == 0 or i == 1:
+                pass
+            elif splitphase[i] != "*" and splitphase[i]!="+"and splitphase[i]!= "/"and splitphase[i]!= "-":
+                pass
+            elif splitphase[i] == "*":
+                result3 *= int(splitphase[i+1])
+            elif splitphase[i] == "+":
+                result3 += int(splitphase[i+1])
+            elif splitphase[i] == "-":
+                result3 -= int(splitphase[i+1])
+            elif splitphase[i] == "/":
+                result3 /= int(splitphase[i+1])
+        await message.channel.send(result3)
+    if message.content[0:4] == "$삭제 ":
+        split4 = message.content.split(" ")
+        split4 = int(split4[1])
+        await message.channel.purge(limit=split4)
+    if message.content[0:4] == "$도배 ":
+        split5 = message.content.split(" ")
+        split6 = int(split5[1])
+        split7 = ' '.join(split5[2:])
+        for i in range(split6):
+            await message.channel.send(split7)
+
 access_token = os.environ["BOT_TOKEN"]
 bot.run(access_token)
