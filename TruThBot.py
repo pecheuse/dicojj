@@ -41,26 +41,26 @@ async def on_message(message):
         embed.set_footer(
             icon_url="https://www.google.com/search?q="+str(messagesplit)+"&hl=ko&tbm=isch")
         embed.set_image(url=img_src)
-        await message.channel.send(message.channel, embed=embed)
+        await message.channel.send(embed=embed)
     if message.content.startswith("$봇 "):
         if message.content[-1] == "?":
             if message.content[2] == "나":
                 embed = discord.Embed(title="수린:", description= YES + YES2+message.content[3:-1], color=0x383b38)
-                await message.channel.send(message.channel, embed=embed)
+                await message.channel.send(embed=embed)
             else:
                 embed = discord.Embed(title="수린:", description= YES + message.content[2:-1], color=0x383b38)
-                await message.channel.send(message.channel, embed=embed)
+                await message.channel.send(embed=embed)
         else:
             if message.content[2]== "나":
                 embed = discord.Embed(title="수린:", description= YES + YES2+message.content[3:-1], color=0x383b38)
-                await message.channel.send(message.channel, embed=embed)
+                await message.channel.send(embed=embed)
             else:
                 embed = discord.Embed(title="수린:", description= YES+message.content[2:], color=0x383b38)
-                await message.channel.send(message.channel, embed=embed)
+                await message.channel.send(embed=embed)
     id = message.author.id
     if message.content.startswith("$tr "):
          embed = discord.Embed(title="수린:", description=str(YES3) + str(id) + str(YES4) + str(message.content[3:]) + str(YES5), color=0x383b38)
-         await message.channel.send(message.channel, embed=embed)
+         await message.channel.send(embed=embed)
 
     if message.content.startswith("$비밀"):
         await message.channel.purge(limit=1)
@@ -107,10 +107,10 @@ async def on_message(message):
         Z8 = Z7.replace('8', ':eight:')
         Z9 = Z8.replace('9', ':nine:')
         embed = discord.Embed(description=Z9, color=0x383b38)
-        await message.channel.send(message.channel, embed=embed)
+        await message.channel.send(embed=embed)
     if message.content.startswith("$명령어"):
         embed = discord.Embed(description= "$봇 <내용> (대화 기능)\n$tr <내용> (내용 강조)\n$검색 <내용> (이미지 검색)\n$비밀 <내용> (비밀 메시지)\n$표현 <내용> (이모티콘으로 영어,숫자표시)\n$투표 <(내용)/투표)> (투표)\n$랜덤 <1번/2번/3번/4번...> (랜덤 추첨)", color=0x383b38)
-        await message.channel.send(message.channel, embed=embed)
+        await message.channel.send(embed=embed)
     """if message.content.startswith("$투표"):
         vote = message.content[4:].split("/")
         await message.channel.send(message.channel, vote[0])
@@ -122,7 +122,7 @@ async def on_message(message):
         select = message.content[4:].split("/")
         select2 = random.choice(select)
         embed = discord.Embed(description="선정:"+select2, color=0x383b38)
-        await message.channel.send(message.channel, embed=embed)
+        await message.channel.send(embed=embed)
     """if message.content.startswith("Tnick "):
         if message.content[6:9] == 'add':
             write = open('./nickname.txt', 'a+')
@@ -176,4 +176,8 @@ async def on_message(message):
         split7 = ' '.join(split5[2:])
         for i in range(split6):
             await message.channel.send(split7)
-bot.run("BOT_TOKEN")
+
+
+access_token = os.environ["BOT_TOKEN"]
+bot.run(access_token)
+
