@@ -140,7 +140,7 @@ async def on_message(message):
                 result3 -= int(splitphase[i+1])
             elif splitphase[i] == "/":
                 result3 /= int(splitphase[i+1])
-        await message.channel.send("계산은 앞에서부터 뒤로 계산합니다. 계산순서무시)
+        await message.channel.send("계산은 앞에서부터 뒤로 계산합니다. 계산순서무시")
         await message.channel.send(result3)
     if message.content[0:4] == "$삭제 ":
         split4 = message.content.split(" ")
