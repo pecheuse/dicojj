@@ -42,18 +42,18 @@ async def on_message(message):
         await message.channel.send(embed=embed)
     if message.content.startswith("$봇 "):
         if message.content[-1] == "?":
-            if message.content[2] == "나":
-                embed = discord.Embed(title="수린:", description= YES + YES2+message.content[3:-1], color=0x383b38)
+            if message.content[3] == "나":
+                embed = discord.Embed(title="수린:", description= YES + YES2+message.content[4:-1], color=0x383b38)
                 await message.channel.send(embed=embed)
             else:
-                embed = discord.Embed(title="수린:", description= YES + message.content[2:-1], color=0x383b38)
+                embed = discord.Embed(title="수린:", description= YES + message.content[3:-1], color=0x383b38)
                 await message.channel.send(embed=embed)
         else:
-            if message.content[2]== "나":
-                embed = discord.Embed(title="수린:", description= YES + YES2+message.content[3:-1], color=0x383b38)
+            if message.content[3]== "나":
+                embed = discord.Embed(title="수린:", description= YES + YES2+message.content[4:-1], color=0x383b38)
                 await message.channel.send(embed=embed)
             else:
-                embed = discord.Embed(title="수린:", description= YES+message.content[2:], color=0x383b38)
+                embed = discord.Embed(title="수린:", description= YES+message.content[3:], color=0x383b38)
                 await message.channel.send(embed=embed)
     id = message.author.id
     if message.content.startswith("$tr "):
