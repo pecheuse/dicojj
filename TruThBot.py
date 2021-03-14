@@ -62,7 +62,7 @@ async def on_message(message):
 
     if message.content.startswith("$비밀"):
         await message.channel.purge(limit=1)
-        embed = discord.Embed(title="비밀 메시지 입니다.", description=message.content[2:], color=0x383b38)
+        embed = discord.Embed(title="비밀 메시지 입니다.", description=message.content[3:], color=0x383b38)
         await message.channel.send("누군가가 비밀 메세지를 입력 했습니다.", embed=embed)
         # await bot.send_message(message.channel, "https://www.google.com/search?q=")
     if message.content.startswith("$표현 "):
