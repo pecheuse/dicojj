@@ -5,7 +5,7 @@ import requests
 import random
 from bs4 import BeautifulSoup as bs
 client = discord.Client()
-bot = commands.Bot(command_prefix='$')
+bot = commands.Bot(command_prefix='T')
 import os
 WD = os.path.dirname(os.path.abspath(__file__))
 AD = 'nickname.txt'
@@ -42,28 +42,13 @@ async def on_message(message):
     if message.content.startswith("tr "):
          embed = discord.Embed(title="수린:", description=YES3 + id + YES4 + message.content[3:] + YES5, color=0x383b38)
          await bot.send_message(message.channel, embed=embed)
-    if message.content[0:4] == "$검색 ":
-        messagesplit = message.content.split(" ")
-        messagesplit = ''.join(messagesplit[1:])
-        webpage = requests.get("https://www.google.com/search?q="+str(messagesplit)+"&hl=ko&tbm=isch")
-        soup = BeautifulSoup(webpage.text, "html.parser")
-        img = soup.find_all('img')
-        img2=img[2]
-        img_src=img2.get('src')
-        embed = discord.Embed(title=message.content[4:]+":",
-                              description="https://www.google.com/search?q="+str(messagesplit)+"&hl=ko&tbm=isch",
-                              color=0x383b38)
-        embed.set_footer(
-            icon_url="https://www.google.com/search?q="+str(messagesplit)+"&hl=ko&tbm=isch")
-        embed.set_image(url=img_src)
-        await message.channel.send(message.content, embed=embed)
-        del group, search, bp, img, embed
+
     if message.content.startswith("비밀"):
         await bot.delete_message(message)
         embed = discord.Embed(title="비밀 메시지 입니다.", description=message.content[2:], color=0x383b38)
         await bot.send_message(message.channel, embed=embed)
         # await bot.send_message(message.channel, "https://www.google.com/search?q=")
-    if message.content.startswith("$표현 "):
+    if message.content.startswith("T표현 "):
         AA = message.content[4:]
         AA2 = AA.upper()
         A = AA2.replace('A', ":regional_indicator_a:")
@@ -104,22 +89,22 @@ async def on_message(message):
         Z9 = Z8.replace('9', ':nine:')
         embed = discord.Embed(description=Z9, color=0x383b38)
         await bot.send_message(message.channel, embed=embed)
-    if message.content.startswith("$명령어"):
+    if message.content.startswith("T명령어"):
         embed = discord.Embed(description= "봇 <내용> (대화 기능)\ntr <내용> (내용 강조)\n검색 <내용> (이미지 검색)\n비밀 <내용> (비밀 메시지)\nT표현 <내용> (이모티콘으로 영어,숫자표시)\nT투표 <(내용)/투표)> (투표)\nT랜덤 <1번/2번/3번/4번...> (랜덤 추첨)", color=0x383b38)
         await bot.send_message(message.channel, embed=embed)
-    if message.content.startswith("$투표"):
+    if message.content.startswith("T투표"):
         vote = message.content[4:].split("/")
         await bot.send_message(message.channel, vote[0])
         for TTT in range(1, len(vote)):
             choose = await bot.send_message(message.channel, "*"+vote[TTT]+"*")
             await bot.add_reaction(choose, '✅')
             await bot.add_reaction(choose, '❌')
-    if message.content.startswith("$랜덤"):
+    if message.content.startswith("T랜덤"):
         select = message.content[4:].split("/")
         select2 = random.choice(select)
         embed = discord.Embed(description="선정:"+select2, color=0x383b38)
         await bot.send_message(message.channel, embed=embed)
-    if message.content.startswith("$nick "):
+    if message.content.startswith("Tnick "):
         if message.content[6:9] == 'add':
             write = open('./nickname.txt', 'a+')
             write.write(YES3+id+">:"+message.content[10:]+"\n")
@@ -129,49 +114,6 @@ async def on_message(message):
             read = open('./nickname.txt', 'r')
             await bot.send_message(message.channel, read.read())
             read.close()
-    if message.content[0:4] == "$계산 ":
-        splitphase = message.content.split(" ")
-        first1 = int(splitphase[1])
-        second2 = splitphase[2]
-        third3 = int(splitphase[3])
-        result2 = 0
-        if second2 == "*":
-            result2 = first1 * third3
-        elif second2 == "/":
-            result2 = first1 / third3
-        elif second2 == "+":
-            result2 = first1 + third3
-        elif second2 == "-":
-            result2 = first1 - third3
-        await message.channel.send(result2)
-    if message.content[0:5] == "$계산기 ":
-        splitphase = message.content.split(" ")
-        result3 = int(splitphase[1])
-
-        for i in range(len(splitphase)):
-            if i == 0 or i == 1:
-                pass
-            elif splitphase[i] != "*" and splitphase[i]!="+"and splitphase[i]!= "/"and splitphase[i]!= "-":
-                pass
-            elif splitphase[i] == "*":
-                result3 *= int(splitphase[i+1])
-            elif splitphase[i] == "+":
-                result3 += int(splitphase[i+1])
-            elif splitphase[i] == "-":
-                result3 -= int(splitphase[i+1])
-            elif splitphase[i] == "/":
-                result3 /= int(splitphase[i+1])
-        await message.channel.send(result3)
-    if message.content[0:4] == "$삭제 ":
-        split4 = message.content.split(" ")
-        split4 = int(split4[1])
-        await message.channel.purge(limit=split4)
-    if message.content[0:4] == "$도배 ":
-        split5 = message.content.split(" ")
-        split6 = int(split5[1])
-        split7 = ' '.join(split5[2:])
-        for i in range(split6):
-            await message.channel.send(split7)
 
 access_token = os.environ["BOT_TOKEN"]
 bot.run(access_token)
