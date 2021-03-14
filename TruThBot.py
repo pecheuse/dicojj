@@ -5,7 +5,7 @@ import requests
 import random
 from bs4 import BeautifulSoup as bs
 client = discord.Client()
-bot = commands.Bot(command_prefix='T')
+bot = commands.Bot(command_prefix='$')
 import os
 WD = os.path.dirname(os.path.abspath(__file__))
 AD = 'nickname.txt'
@@ -63,7 +63,7 @@ async def on_message(message):
         embed = discord.Embed(title="비밀 메시지 입니다.", description=message.content[2:], color=0x383b38)
         await bot.send_message(message.channel, embed=embed)
         # await bot.send_message(message.channel, "https://www.google.com/search?q=")
-    if message.content.startswith("T표현 "):
+    if message.content.startswith("$표현 "):
         AA = message.content[4:]
         AA2 = AA.upper()
         A = AA2.replace('A', ":regional_indicator_a:")
@@ -104,22 +104,22 @@ async def on_message(message):
         Z9 = Z8.replace('9', ':nine:')
         embed = discord.Embed(description=Z9, color=0x383b38)
         await bot.send_message(message.channel, embed=embed)
-    if message.content.startswith("T명령어"):
+    if message.content.startswith("$명령어"):
         embed = discord.Embed(description= "봇 <내용> (대화 기능)\ntr <내용> (내용 강조)\n검색 <내용> (이미지 검색)\n비밀 <내용> (비밀 메시지)\nT표현 <내용> (이모티콘으로 영어,숫자표시)\nT투표 <(내용)/투표)> (투표)\nT랜덤 <1번/2번/3번/4번...> (랜덤 추첨)", color=0x383b38)
         await bot.send_message(message.channel, embed=embed)
-    if message.content.startswith("T투표"):
+    if message.content.startswith("$투표"):
         vote = message.content[4:].split("/")
         await bot.send_message(message.channel, vote[0])
         for TTT in range(1, len(vote)):
             choose = await bot.send_message(message.channel, "*"+vote[TTT]+"*")
             await bot.add_reaction(choose, '✅')
             await bot.add_reaction(choose, '❌')
-    if message.content.startswith("T랜덤"):
+    if message.content.startswith("$랜덤"):
         select = message.content[4:].split("/")
         select2 = random.choice(select)
         embed = discord.Embed(description="선정:"+select2, color=0x383b38)
         await bot.send_message(message.channel, embed=embed)
-    if message.content.startswith("Tnick "):
+    if message.content.startswith("$nick "):
         if message.content[6:9] == 'add':
             write = open('./nickname.txt', 'a+')
             write.write(YES3+id+">:"+message.content[10:]+"\n")
