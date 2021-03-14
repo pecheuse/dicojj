@@ -7,8 +7,6 @@ from bs4 import BeautifulSoup
 client = discord.Client()
 bot = commands.Bot(command_prefix='$')
 import os
-WD = os.path.dirname(os.path.abspath(__file__))
-AD = 'nickname.txt'
 YES = "네,"
 YES2 = "너"
 YES3 = "<@"
@@ -111,13 +109,6 @@ async def on_message(message):
     if message.content.startswith("$명령어"):
         embed = discord.Embed(description= "$봇 <내용> (대화 기능)\n$tr <내용> (내용 강조)\n$검색 <내용> (이미지 검색)\n$비밀 <내용> (비밀 메시지)\n$표현 <내용> (이모티콘으로 영어,숫자표시)\n$투표 <(내용)/투표)> (투표)\n$랜덤 <1번/2번/3번/4번...> (랜덤 추첨)", color=0x383b38)
         await message.channel.send(embed=embed)
-    """if message.content.startswith("$투표"):
-        vote = message.content[4:].split("/")
-        await message.channel.send(message.channel, vote[0])
-        for TTT in range(1, len(vote)):
-            choose = await message.channel.send(message.channel, "*"+vote[TTT]+"*")
-            await bot.add_reaction(choose, '✅')
-            await bot.add_reaction(choose, '❌')"""
     if message.content.startswith("$랜덤"):
         select = message.content[4:].split("/")
         select2 = random.choice(select)
