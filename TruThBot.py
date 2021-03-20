@@ -151,7 +151,8 @@ async def on_message(message):
         split6 = int(split5[1])
         split7 = ' '.join(split5[2:])
         for i in range(split6):
-            await message.channel.send(split7)
+            if i <= 10:
+                await message.channel.send(split7)
 
 
 access_token = os.environ["BOT_TOKEN"]
