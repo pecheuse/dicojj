@@ -157,7 +157,7 @@ async def on_message(message):
         embed = discord.Embed(title="o3983은 발언권 없어짐", description=message.content,
                               color=0x383b38)
         embed.set_thumbnail(url=message.author.avatar_url)
-        await message.channel.purge(limit=1)
+        await message.delete()
         await message.channel.send(embed = embed)
 
 access_token = os.environ["BOT_TOKEN"]
