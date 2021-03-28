@@ -153,12 +153,12 @@ async def on_message(message):
         for i in range(split6):
             if i <= 10:
                 await message.channel.send(split7)
-    if message.author.id == 669851548414640131:
-        embed = discord.Embed(title="o3983은 발언권 없어짐", description=message.content,
-                              color=0x383b38)
-        embed.set_thumbnail(url=message.author.avatar_url)
-        await message.delete()
-        await message.channel.send(embed = embed)
+    #if message.author.id == 669851548414640131:
+        #embed = discord.Embed(title="o3983은 발언권 없어짐", description=message.content,
+                             # color=0x383b38)
+        #embed.set_thumbnail(url=message.author.avatar_url)
+        #await message.delete()
+        #await message.channel.send(embed = embed)
 
 access_token = os.environ["BOT_TOKEN"]
 bot.run(access_token)
