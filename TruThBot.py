@@ -153,6 +153,10 @@ async def on_message(message):
         for i in range(split6):
             if i <= 10:
                 await message.channel.send(split7)
+        if message.author.id == 269834118722879488:
+            for i in range(split6):
+                if i >= 10:
+                    await message.channel.send(split7)
     #if message.author.id == 669851548414640131:
         #embed = discord.Embed(title="o3983은 발언권 없어짐", description=message.content,
                              # color=0x383b38)
